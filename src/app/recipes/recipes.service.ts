@@ -33,6 +33,14 @@ export class RecipesService {
   constructor() {}
 
   getAllRecipes() {
-    return this.recipes;
+    return [...this.recipes];
+  }
+
+  getRecipe(recipeId: string) {
+    return { ...this.recipes.find(({ id }) => id === recipeId) };
+  }
+
+  deleteRecipe(recipeId: string) {
+    this.recipes = this.recipes.filter(({ id }) => id !== recipeId);
   }
 }
